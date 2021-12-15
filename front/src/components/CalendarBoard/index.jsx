@@ -1,6 +1,8 @@
-import React from "react";
+import React from 'react';
 
 import { ImageList } from '@material-ui/core';
+
+import CalendarElement from '../CalendarElement';
 import * as styles from './style.css';
 
 import dayjs from 'dayjs';
@@ -39,9 +41,7 @@ const CalendarBoard = () => {
             <ImageList className={styles.grid} cols={7} gap={0} rowHeight="auto">
                 {calendar.map(day => (
                     <li key={day.toISOString()}>
-                        <div className={styles.element}>
-                            {day.format('D')}
-                        </div>
+                        <CalendarElement>{day.format('D')}</CalendarElement>
                     </li>
                 ))}
             </ImageList>
