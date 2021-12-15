@@ -17,10 +17,15 @@ const CalendarElement = ({ day }) => {
     // 文字列に変換した上で全く同じ文字列になっているか（＝同じ日か）という判定
     const isToday = day.format(compareFormat) === today.format(compareFormat);
 
+    // 今月以外をグレーダウン
+    const isCurrentMonth = day.month() === today.month();
+    const textColor = isCurrentMonth ? 'textPrimary' : 'textSecondary';
+
     return (
         <div className={styles.element}>
             <Typography
                 className={styles.date}
+                color={textColor}
                 align='center'
                 variant='caption'
                 component='div'
