@@ -3,34 +3,10 @@ import React from 'react';
 import { ImageList } from '@material-ui/core';
 
 import CalendarElement from '../CalendarElement';
+import { createCalendar } from '../../services/calendar'
 import * as styles from './style.css';
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
-
-dayjs.locale('ja');
-
-
-const createCalendar = () => {
-
-    const firstDay = dayjs().startOf('month');
-
-    // 最初の日の曜日のindexを取得
-    const firstDayIndex = firstDay.day();
-
-    return Array(35)
-        .fill(0)
-        .map((_, i) => {
-            const diffFromFirstDay = i - firstDayIndex;
-            const day = firstDay.add(diffFromFirstDay, 'day');
-
-            return day;
-        });
-};
-
-// ダミーデータ
 const calendar = createCalendar();
-
 
 const CalendarBoard = () => {
 
