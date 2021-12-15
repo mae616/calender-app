@@ -17,7 +17,7 @@ const CalendarBoard = () => {
             <ImageList className={styles.grid} cols={7} gap={0} rowHeight="auto">
                 {calendar.map(day => (
                     <li key={day.toISOString()}>
-                        <CalendarElement>{day.format('D')}</CalendarElement>
+                        <CalendarElement day={day}></CalendarElement>
                     </li>
                 ))}
             </ImageList>
