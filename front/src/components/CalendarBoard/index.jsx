@@ -1,12 +1,12 @@
 import React from 'react';
 
+import CalendarElement from '../CalendarElement';
+import { createCalendar } from '../../services/calendar'
+
 import {
     ImageList,
     Typography
 } from '@material-ui/core';
-
-import CalendarElement from '../CalendarElement';
-import { createCalendar } from '../../services/calendar'
 import * as styles from './style.css';
 
 const calendar = createCalendar();
