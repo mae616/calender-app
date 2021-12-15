@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GridList } from '@material-ui/core';
+import { ImageList } from '@material-ui/core';
 import * as styles from './style.css';
 
 import dayjs from 'dayjs';
@@ -18,7 +18,12 @@ const createCalendar = () => {
 
     return Array(35)
         .fill(0)
-        .map((_, i) => i - firstDayIndex);
+        .map((_, i) => {
+            const diffFromFirstDay = i - firstDayIndex;
+            const day = firstDay.add(diffFromFirstDay, 'day');
+
+            return day;
+        });
 };
 
 // ダミーデータ
@@ -31,15 +36,15 @@ const CalendarBoard = () => {
 
     return (
         <div className={styles.container}>
-            <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
+            <ImageList className={styles.grid} cols={7} gap={0} rowHeight="auto">
                 {calendar.map(day => (
-                    <li>
+                    <li key={day.toISOString()}>
                         <div className={styles.element}>
-                            {day}
+                            {day.format('D')}
                         </div>
                     </li>
                 ))}
-            </GridList>
+            </ImageList>
         </div >
     );
 };

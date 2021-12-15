@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import CalendarBoard from './components/CalendarBoard';
 
 const App = () => (
-    <di>
+    <div>
         <CalendarBoard />
-    </di>
+    </div>
 );
 
 ReactDOM.render(<App />, document.getElementById("root"));
