@@ -1,10 +1,10 @@
 // ロジックの分離
 import dayjs from 'dayjs';
 
-export const createCalendar = () => {
+export const createCalendar = month => {
 
-    // 今月の最初の日を取得
-    const firstDay = dayjs().startOf('month');
+    // 最初の日を取得
+    const firstDay = getMonth(month);
 
     // 最初の日の曜日のindexを取得
     const firstDayIndex = firstDay.day();
@@ -17,6 +17,11 @@ export const createCalendar = () => {
 
             return day;
         });
+};
+
+// 月を取得
+export const getMonth = ({ year, month }) => {
+    return dayjs(`${year}-${month}`);
 };
 
 // 同じ年月日かどうか判定
