@@ -1,7 +1,7 @@
+// 表示にのみ責務をもつコンポーネント
 import React from 'react';
 
 import CalendarElement from '../CalendarElement';
-import { createCalendar } from '../../services/calendar'
 
 import {
     ImageList,
@@ -9,11 +9,9 @@ import {
 } from '@material-ui/core';
 import * as styles from './style.css';
 
-const calendar = createCalendar();
-
 const week = ['日', '月', '火', '水', '木', '金', '土'];
 
-const CalendarBoard = () => {
+const CalendarBoard = ({ calendar }) => {
 
     console.log(calendar);
 
