@@ -11,7 +11,7 @@ import * as styles from './style.css';
 
 const week = ['日', '月', '火', '水', '木', '金', '土'];
 
-const CalendarBoard = ({ calendar }) => {
+const CalendarBoard = ({ calendar, month }) => {
 
     console.log(calendar);
 
@@ -33,7 +33,7 @@ const CalendarBoard = ({ calendar }) => {
                 ))}
                 {calendar.map(day => (
                     <li key={day.toISOString()}>
-                        <CalendarElement day={day}></CalendarElement>
+                        <CalendarElement day={day} month={month}></CalendarElement>
                     </li>
                 ))}
             </ImageList>

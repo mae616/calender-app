@@ -13,6 +13,7 @@ const mapStateToProps = state => ({ calendar: state.calendar });
 // stateProps...mapStateToPropsのこと
 // ※mergePropsはmapStateToPropsの結果が前回と異なっていたときにだけ実行される
 const mergeProps = stateProps => ({
+    month: stateProps.calendar,
     calendar: createCalendar(stateProps.calendar)
 });
 
