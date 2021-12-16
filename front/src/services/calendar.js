@@ -1,6 +1,7 @@
 // ロジックの分離
 import dayjs from 'dayjs';
 
+// month...stateのカレンダーの{year, month}を受け取る
 export const createCalendar = month => {
 
     // 最初の日を取得
@@ -23,6 +24,25 @@ export const createCalendar = month => {
 export const getMonth = ({ year, month }) => {
     return dayjs(`${year}-${month}`);
 };
+
+// 次の月を取得
+export const getNextMonth = month => {
+    const day = getMonth(month).add(1, 'month');
+    return formatMonth(day);
+};
+
+// 前の月を取得
+export const getPreviousMonth = month => {
+    const day = getMonth(month).add(-1, 'month');
+    return formatMonth(day);
+};
+
+// 日をstate.calendarと同じオブジェクト形式にする
+// dayjsのmonthは0〜11だから+1する
+export const formatMonth = day => ({
+    month: day.month() + 1,
+    year: day.year()
+});
 
 // 同じ年月日かどうか判定
 export const isSameDay = (day1, day2) => {

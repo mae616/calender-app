@@ -2,13 +2,12 @@ import dayjs from 'dayjs';
 
 import { CALENDAR_SET_MONTH } from './actions';
 
+import { formatMonth } from '../../services/calendar';
+
 const day = dayjs();
 
 // 今日の年と月を初期値にする
-const init = {
-    year: day.year(),
-    month: day.month() + 1
-};
+const init = formatMonth(day);
 
 // ※reducer にロジックを持たせないようにする
 const calendarReducer = (state = init, action) => {
