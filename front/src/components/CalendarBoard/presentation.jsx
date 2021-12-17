@@ -11,9 +11,7 @@ import * as styles from './style.css';
 
 const week = ['日', '月', '火', '水', '木', '金', '土'];
 
-const CalendarBoard = ({ calendar, month }) => {
-
-    console.log(calendar);
+const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
 
     return (
         <div className={styles.container}>
@@ -32,7 +30,7 @@ const CalendarBoard = ({ calendar, month }) => {
                     </li>
                 ))}
                 {calendar.map(day => (
-                    <li key={day.toISOString()}>
+                    <li key={day.toISOString()} onClick={() => openAddScheduleDialog()}>
                         <CalendarElement day={day} month={month}></CalendarElement>
                     </li>
                 ))}
