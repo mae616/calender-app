@@ -10,7 +10,13 @@ import {
     withStyles
 } from '@material-ui/core';
 
-import { LocationOnOutlined, NotesOutlined } from '@material-ui/icons';
+import {
+    LocationOnOutlined,
+    NotesOutlined,
+    AccessTime
+} from '@material-ui/icons';
+
+import { DatePicker } from '@material-ui/pickers';
 
 const spacer = { margin: '4px 0' };
 
@@ -20,7 +26,7 @@ const Title = withStyles({
 
 const AddScheduleDialog = ({
     schedule: {
-        form: { title, location, description },
+        form: { title, location, description, date },
         isDialogOpen
     },
     closeDialog,
@@ -36,11 +42,28 @@ const AddScheduleDialog = ({
                     value={title}
                     onChange={e => setSchedule({ title: e.target.value })}
                 />
-                <Grid container spacing={1} alignItem="center" justify="space-between">
-                    <Grid Item>
+                <Grid container spacing={1} alignItems="center" justifyContent="space-between">
+                    <Grid item>
+                        <AccessTime />
+                    </Grid>
+                    <Grid item xs={10}>
+                        <DatePicker
+                            value={date}
+                            onChange={d => setSchedule({ date: d })}
+                            variant="inline"
+                            format="YYYY年M月D日"
+                            animateYearScrolling
+                            disableToolbar
+                            fullWidth
+                            style={spacer}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container spacing={1} alignItems="center" justifyContent="space-between">
+                    <Grid item>
                         <LocationOnOutlined />
                     </Grid>
-                    <Grid Item xs={10}>
+                    <Grid item xs={10}>
                         <TextField
                             style={spacer}
                             fullWidth
@@ -50,7 +73,7 @@ const AddScheduleDialog = ({
                         />
                     </Grid>
                 </Grid>
-                <Grid container spacing={1} alignItem="center" justify="space-between">
+                <Grid container spacing={1} alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <NotesOutlined />
                     </Grid>
@@ -66,7 +89,7 @@ const AddScheduleDialog = ({
                 </Grid>
             </DialogContent>
             <DialogActions>
-                <Button color="primary" variant="outline">
+                <Button color="primary" variant="outlined">
                     保存
                 </Button>
             </DialogActions>

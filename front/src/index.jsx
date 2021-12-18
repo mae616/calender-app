@@ -12,7 +12,7 @@ import DayjsUtils from '@date-io/dayjs';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
+import jaLocale from 'dayjs/locale/ja';
 
 // dayjsのローカライズ
 // (初期化時に必ず呼ばれるようになる)
@@ -24,7 +24,7 @@ const store = createStore(rootReducer);
 
 const App = () => (
     <Provider store={store}>
-        <MuiPickersUtilsProvider utils={DayjsUtils}>
+        <MuiPickersUtilsProvider utils={DayjsUtils} locale={jaLocale}>
             <Navigation />
             <CalendarBoard />
             <AddScheduleDialog />
