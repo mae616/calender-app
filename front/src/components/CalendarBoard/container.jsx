@@ -10,7 +10,10 @@ import {
 
 // stateをpropsにマッピングしている
 // ※状態の変更の監視を行なって、store が何かひとつでも変更されると、どれが変更されたかによらず実行される
-const mapStateToProps = state => ({ calendar: state.calendar });
+const mapStateToProps = state => ({
+    calendar: state.calendar,
+    schedules: state.schedules
+});
 
 const mapDispatchToProps = dispatch => ({
     openAddScheduleDialog: d => {
