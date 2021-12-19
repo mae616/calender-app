@@ -1,5 +1,6 @@
 // コンポーネントの分離
 import React from 'react';
+import Schedule from '../Schedule';
 
 import {
     isSameMonth,
@@ -13,7 +14,7 @@ import { Typography } from '@material-ui/core';
 
 import dayjs from 'dayjs';
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules }) => {
 
     const today = dayjs();
 
@@ -42,6 +43,11 @@ const CalendarElement = ({ day, month }) => {
                     {day.format(format)}
                 </span>
             </Typography>
+            <div className={styles.schedules}>
+                {schedules.map(form => (
+                    <Schedule key={form.id} schedule={form} />
+                ))}
+            </div>
         </div>
     );
 };

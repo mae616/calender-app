@@ -35,7 +35,7 @@ const CalendarBoard = ({
                     </li>
                 ))}
                 {calendar.map(({ date, schedules }) => (
-                    <li key={date.toISOString()} onClick={() => openAddScheduleDialog(day)}>
+                    <li key={date.toISOString()} onClick={() => openAddScheduleDialog(date)}>
                         <CalendarElement day={date} month={month} schedules={schedules}></CalendarElement>
                     </li>
                 ))}

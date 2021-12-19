@@ -15,3 +15,8 @@
   color: #fff;
   border-radius: 50%;
 }
+.schedules {
+  /* 予定が多くなったときにその日付内でスクロールするように指定 */
+  overflow: scroll;
+  height: calc(18vh - 40px);
+}
