@@ -14,7 +14,12 @@ import { Typography } from '@material-ui/core';
 
 import dayjs from 'dayjs';
 
-const CalendarElement = ({ day, month, schedules }) => {
+const CalendarElement = ({
+    day,
+    month,
+    schedules,
+    ...props
+}) => {
 
     const today = dayjs();
 
@@ -45,7 +50,7 @@ const CalendarElement = ({ day, month, schedules }) => {
             </Typography>
             <div className={styles.schedules}>
                 {schedules.map(form => (
-                    <Schedule key={form.id} schedule={form} />
+                    <Schedule key={form.id} schedule={form} {...props} />
                 ))}
             </div>
         </div>

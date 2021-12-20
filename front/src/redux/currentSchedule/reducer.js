@@ -2,7 +2,7 @@ import { Satellite } from '@material-ui/icons';
 import {
     CURRENT_SCHEDULE_SET_ITEM,
     CURRENT_SCHEDULE_OPEN_DIALOG,
-    CURRENT_SCHEDULE_CLOSE__DIALOG
+    CURRENT_SCHEDULE_CLOSE_DIALOG
 } from './actions';
 
 const init = {
