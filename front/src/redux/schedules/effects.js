@@ -1,8 +1,12 @@
-import { schedulesSetLoading, schedulesFetchItem } from './actions';
-import { get } from '../../services/api';
+import {
+    schedulesSetLoading,
+    schedulesFetchItem,
+    schedulesAddItem
+} from './actions';
+import { get, post } from '../../services/api';
 import { formatSchedule } from '../../services/schedule';
 
-
+// その月の予定を取得する
 // export const asyncSchedulesFetchItem = ({ month, year }) => {
 //     return (async dispatch => {
 //         dispatch(schedulesSetLoading());
@@ -23,4 +27,19 @@ export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
     const formattedSchedule = result.map(form => formatSchedule(form));
 
     dispatch(schedulesFetchItem(formattedSchedule));
+};
+
+// 予定を追加する
+export const asyncSchedulesAddItem = schedule => async dispatch => {
+    // loading: trueにする
+    dispatch(schedulesSetLoading());
+
+    // 日付をISOStringという規格に変換
+    const body = { ...schedule, date: schedule.date.toISOString() };
+    const result = await post('schedules', body);
+
+    // POST が成功すると追加された予定が返ってくる
+    // 日付データを処理して、schedulesAddItem()で dispatch して状態を更新
+    const newSchedule = formatSchedule(result);
+    dispatch(schedulesAddItem(newSchedule));
 };
