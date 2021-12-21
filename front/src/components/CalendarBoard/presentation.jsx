@@ -20,6 +20,7 @@ const CalendarBoard = ({
 }) => {
 
     useEffect(() => {
+        // 画面初期表示時の予定の取得
         // 非同期処理
         fetchSchedule();
     }, []);
