@@ -14,6 +14,8 @@ import {
     currentScheduleOpenDialog
 } from '../../redux/currentSchedule/actions';
 
+import { asyncSchedulesFetchItem } from '../../redux/schedules/effects';
+
 // stateをpropsにマッピングしている
 // ※状態の変更の監視を行なって、store が何かひとつでも変更されると、どれが変更されたかによらず実行される
 const mapStateToProps = state => ({
@@ -35,6 +37,9 @@ const mapDispatchToProps = dispatch => ({
 
         dispatch(currentScheduleSetItem(schedule));
         dispatch(currentScheduleOpenDialog());
+    },
+    fetchSchedule: month => {
+        dispatch(asyncSchedulesFetchItem(month));
     }
 })
 
@@ -54,6 +59,7 @@ const mergeProps = (stateProps, dispatchProps) => {
     return {
         ...stateProps,
         ...dispatchProps,
+        fetchSchedule: () => dispatchProps.fetchSchedule(month), // ここでカリー化の関数を取ろうとしている
         calendar,
         month
     };

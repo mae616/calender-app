@@ -1,5 +1,5 @@
 // 表示にのみ責務をもつコンポーネント
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import CalendarElement from '../CalendarElement';
 
@@ -15,8 +15,14 @@ const CalendarBoard = ({
     calendar,
     month,
     openAddScheduleDialog,
-    openCurrentScheduleDialog
+    openCurrentScheduleDialog,
+    fetchSchedule
 }) => {
+
+    useEffect(() => {
+        // 非同期処理
+        fetchSchedule();
+    }, []);
 
     return (
         <div className={styles.container}>

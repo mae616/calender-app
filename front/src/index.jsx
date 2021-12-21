@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import CalendarBoard from './components/CalendarBoard/container';
 import Navigation from './components/Navigation/container';
@@ -21,7 +22,8 @@ dayjs.locale('ja');
 
 import rootReducer from './redux/rootReducer';
 
-const store = createStore(rootReducer);
+// redux-thunkが普通の action なのか thunk の action なのかを判断してくれるようになる
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => (
     <Provider store={store}>
