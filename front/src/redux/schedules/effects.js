@@ -1,9 +1,10 @@
 import {
     schedulesSetLoading,
     schedulesFetchItem,
-    schedulesAddItem
+    schedulesAddItem,
+    schedulesDeleteItem
 } from './actions';
-import { get, post } from '../../services/api';
+import { get, post, deleteRequest } from '../../services/api';
 import { formatSchedule } from '../../services/schedule';
 
 // その月の予定を取得する
@@ -42,4 +43,18 @@ export const asyncSchedulesAddItem = schedule => async dispatch => {
     // 日付データを処理して、schedulesAddItem()で dispatch して状態を更新
     const newSchedule = formatSchedule(result);
     dispatch(schedulesAddItem(newSchedule));
+};
+
+// 予定を削除する
+export const asyncSchedulesDeleteItem = id => async (dispatch, getState) => {
+    dispatch(schedulesSetLoading());
+    // getState...thunk の関数の第二引数で store のデータを取得することができる
+    const currentSchedules = getState().schedules.items;
+
+    await deleteRequest(`schedules/${id}`);
+
+    // 成功したらローカルのstateを削除
+    const newSchedules = currentSchedules.filter(form => form.id != id);
+    // 新たに生成されたscheduleの配列が次の state なので、dispatchする
+    dispatch(schedulesDeleteItem(newSchedules));
 };
