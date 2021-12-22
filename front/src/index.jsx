@@ -9,6 +9,7 @@ import CalendarBoard from './components/CalendarBoard/container';
 import Navigation from './components/Navigation/container';
 import AddScheduleDialog from './components/AddScheduleDialog/container';
 import CurrentScheduleDialog from './components/CurrentScheduleDaialog/container';
+import ErrorSnackbar from './components/ErrorSnackbar/container';
 
 import DayjsUtils from '@date-io/dayjs';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
@@ -32,6 +33,7 @@ const App = () => (
             <CalendarBoard />
             <AddScheduleDialog />
             <CurrentScheduleDialog />
+            <ErrorSnackbar />
         </MuiPickersUtilsProvider>
     </Provider>
 );
